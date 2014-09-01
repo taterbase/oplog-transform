@@ -72,10 +72,13 @@ Transform.prototype._work = function() {
 
 Transform.prototype._update = function(change, doc, cb) {
   try {
-    if (change["$set"]) {
-      merge(doc, stringToJSON.convert(change["$set"]))
-    } else if (change["$unset"]) {
+    if (change["$unset"]) {
       eval("delete doc." + Object.keys(change["$unset"])[0])
+    } else if (change["$set"]) {
+      merge(doc, stringToJSON.convert(change["$set"]))
+    } else {
+      change._id = doc._id
+      doc = change
     }
   } catch(e) {
     cb(e)
