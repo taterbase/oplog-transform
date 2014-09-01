@@ -18,11 +18,11 @@ function Transform(options) {
   this._queue = []
 }
 
-Transform.prototype.transform = function(operation) {
-  //Remove mongo metadata, gross I know :'(
-  var op = JSON.parse(JSON.stringify(ejson.parse(operation)))
-  this._addOpToQueue(op)
+Transform.prototype.transform = function(op) {
+  if (typeof op === 'string')
+    op = ejson.parse(op)
 
+  this._addOpToQueue(op)
 }
 
 Transform.prototype._addOpToQueue = function(op) {

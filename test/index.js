@@ -32,16 +32,16 @@ describe('oplog-transform', function() {
         store.should.have.property("5403e9963bd2daf8edc7599e")
         store.should.not.have.property("5403ea1c3bd2daf8edc7599f")
 
-        store["5403e97c3bd2daf8edc7599d"].should.eql({
+        JSON.stringify(store["5403e97c3bd2daf8edc7599d"]).should.eql(JSON.stringify({
           _id: "5403e97c3bd2daf8edc7599d",
           test: 'doc',
           nested: {obj: 'lol'}
-        })
+        }))
 
-        store["5403e9963bd2daf8edc7599e"].should.eql({
+        JSON.stringify(store["5403e9963bd2daf8edc7599e"]).should.eql(JSON.stringify({
           _id: "5403e9963bd2daf8edc7599e",
           test2: 'doc'
-        })
+        }))
 
         done()
       })
