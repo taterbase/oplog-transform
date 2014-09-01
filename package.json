@@ -1,21 +1,36 @@
 {
   "name": "oplog-transform",
   "version": "0.0.1",
-  "description": "Oplog document translator to apply changes to any other store",
+  "description": "Tool to transfrom oplog documents into changes you can apply to other data stores",
   "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
+  "directories": {
+    "test": "test"
   },
-  "author": "taterbase",
-  "license": "ISC",
   "dependencies": {
-    "merge": "^1.1.3",
-    "string-to-json": "^0.1.0",
-    "mongodb-extended-json": "^1.0.1"
+    "string-to-json": "~0.1.0",
+    "merge": "~1.1.3",
+    "mongodb-extended-json": "~1.0.1",
+    "should": "~4.0.4"
   },
   "devDependencies": {
-    "mocha": "^1.21.4",
-    "should": "^4.0.4"
+    "mocha": "~1.21.4"
   },
-  "keywords": ['mongodb', 'mongo', 'oplog', 'transform']
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/taterbase/oplog-transform.git"
+  },
+  "keywords": [
+    "mongodb",
+    "oplog",
+    "mongo"
+  ],
+  "author": "taterbase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taterbase/oplog-transform/issues"
+  },
+  "homepage": "https://github.com/taterbase/oplog-transform"
 }
