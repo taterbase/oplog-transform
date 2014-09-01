@@ -23,7 +23,6 @@ describe('oplog-transform', function() {
   it('should work', function(done) {
     fs.createReadStream(__dirname + '/operations.json', {encoding: 'utf8', autoClose: true})
       .on('data', function(data) {
-        console.log(data)
         data.split('\n').forEach(function(op) {
           if (!!op)
             transform.transform(op)

@@ -1,6 +1,6 @@
 {
   "name": "oplog-transform",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tool to transfrom oplog documents into changes you can apply to other data stores",
   "main": "index.js",
   "directories": {

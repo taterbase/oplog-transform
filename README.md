@@ -1,3 +1,4 @@
+![](https://travis-ci.org/taterbase/oplog-transform.svg)
 #Oplog Transform
 *Free your oplog*
 
