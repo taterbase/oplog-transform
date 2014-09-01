@@ -1,10 +1,16 @@
 var merge = require('merge')
+  , util = require('util')
+  , Writable = require('stream').Writable
   , ejson = require('mongodb-extended-json')
   , stringToJSON = require('string-to-json')
+
+util.inherits(Transform, Writable)
 
 module.exports = Transform
 
 function Transform(options) {
+  Writable.call(this, options)
+
   if (!options.insert)
     throw new Error("Please specify an insert function")
   else if (!options.update)
@@ -16,6 +22,14 @@ function Transform(options) {
   this.update = options.update
   this.remove = options.remove
   this._queue = []
+
+  this._write = function(chunk, enc, next) {
+    if (enc === 'buffer')
+      chunk = chunk.toString('utf8')
+
+    this.transform(chunk)
+    next()
+  }
 }
 
 Transform.prototype.transform = function(op) {

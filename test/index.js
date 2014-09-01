@@ -25,7 +25,7 @@ describe('oplog-transform', function() {
       .on('data', function(data) {
         data.split('\n').forEach(function(op) {
           if (!!op)
-            transform.transform(op)
+            transform.write(op)
         })
       }).on('end', function() {
         store.should.have.property("5403e97c3bd2daf8edc7599d")
