@@ -57,3 +57,8 @@ The update hook must be a function that accepts 2 parameters, the doc `_id`, a `
 
 ###`remove`
 The remove hook must be a function that accepts 2 parameters, the doc `_id` and a callback to fire once you've removed the doc.
+
+
+___
+
+Made with ⚡️ by [@taterbase](https://twitter.com/taterbase)
