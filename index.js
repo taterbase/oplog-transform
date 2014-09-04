@@ -22,14 +22,6 @@ function Transform(options) {
   this.update = options.update
   this.remove = options.remove
   this._queue = []
-
-  this._write = function(chunk, enc, next) {
-    if (enc === 'buffer')
-      chunk = chunk.toString('utf8')
-
-    this.transform(chunk)
-    next()
-  }
 }
 
 Transform.prototype.transform = function(op) {
@@ -37,6 +29,15 @@ Transform.prototype.transform = function(op) {
     op = ejson.parse(op)
 
   this._addOpToQueue(op)
+}
+
+
+Transform.prototype._write = function(chunk, enc, next) {
+  if (enc === 'buffer')
+    chunk = chunk.toString('utf8')
+
+  this.transform(chunk)
+  next()
 }
 
 Transform.prototype._addOpToQueue = function(op) {
