@@ -1,4 +1,4 @@
-![](https://travis-ci.org/taterbase/oplog-transform.svg)
+[![build status](https://travis-ci.org/taterbase/oplog-transform.svg)](https://travis-ci.org/taterbase/oplog-transform)
 #Oplog Transform
 *Free your oplog*
 
