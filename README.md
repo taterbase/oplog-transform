@@ -50,12 +50,36 @@ transform.write(oplogDoc)
 
 ##Hooks
 ###`insert`
+```javascript
+function(_id, doc, cb) {
+  /* insert doc */
+  cb()
+}
+```
+
 The insert hook must be a function that accepts 3 parameters, the doc `_id`, the `doc`, and a callback to fire once you've inserted the document
 
 ###`update`
+```javascript
+function(_id, done){
+  var retrievedDoc = /* fetch doc from your secondary store */
+  done(retrievedDoc, function(err, updatedDoc, cb) {
+    /* store updated doc */
+    cb()
+  })
+}
+```
+
 The update hook must be a function that accepts 2 parameters, the doc `_id`, a `done` callback. Once you've fetched the document from your target datastore call the `done` callback with the fetched document and a callback to receive an error, the updated document, and a final callback to fire once you've updated the record in your target datastore
 
 ###`remove`
+```javascript
+function(_id, cb) {
+  /* delete doc */
+  cb()
+}
+```
+
 The remove hook must be a function that accepts 2 parameters, the doc `_id` and a callback to fire once you've removed the doc.
 
 
