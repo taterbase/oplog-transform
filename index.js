@@ -28,6 +28,12 @@ Transform.prototype.transform = function(op) {
   if (typeof op === 'string')
     op = ejson.parse(op)
 
+  if (op.o && op.o._id)
+    op.o._id = op.o._id.toString()
+
+  if (op.o2)
+    op.o2._id = op.o2._id.toString()
+
   this._addOpToQueue(op)
 }
 
